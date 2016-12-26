@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Don&#39;t panic">
+
+<base href="https://marioharvey.com">
+<title>
+
+
+     Restoring Elasticache Redis Instance You Can&#39;t Snapshot 
+
+</title>
+<link rel="canonical" href="https://marioharvey.com/blog/restoring-elasticache-redis-instance-you-cant-snapshot/">
+
+
+<script type="text/javascript">
+    var baseURL = 'https:\/\/marioharvey.com';
+    var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+    if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+        window.location.protocol = 'https:';
+    }
+</script>
+
+
+
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+
+
+<link rel="stylesheet" href="https://marioharvey.com/css/reset.css">
+<link rel="stylesheet" href="https://marioharvey.com/css/pygments.css">
+<link rel="stylesheet" href="https://marioharvey.com/css/main.css">
+
+
+    <link rel="stylesheet" href="https://marioharvey.com/css/override.css">
+
+
+
+<link rel="shortcut icon"
+
+    href="https://marioharvey.com/img/leaf.ico"
+
+>
+
+
+
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header"> 
+    <div class="container">
+        <div class="content">
+            
+            <a href="https://marioharvey.com/"><div class="name">Mario Harvey</div></a>
+            <nav>
+                <ul>
+                    
+                    <a href="https://marioharvey.com/about/"><li>About</li></a>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+
+        
+            <a href="https://github.com/mar-io" target="_blank">
+                <i class="icon ion-social-github"></i>
+            </a>
+        
+        
+        
+
+        
+            <a href="https://www.linkedin.com/in/marioharvey" target="_blank">
+                <i class="icon ion-social-linkedin"></i>
+            </a>
+        
+
+        
+
+        
+            <a href="https://soundcloud.com/charmsnakes" target="_blank">
+                <i class="icon ion-ios-musical-notes larger"></i>
+            </a>
+        
+
+        
+            <a href="mailto:mario@harvey.codes">
+                <i class="icon ion-ios-email larger"></i>
+            </a>
+        
+
+        
+            <a href="https://marioharvey.com/index.xml">
+                <i class="icon ion-social-rss larger"></i>
+            </a>
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Restoring Elasticache Redis Instance You Can&#39;t Snapshot
+
+</div>
+
+                    <div class="initials"><a href="https://marioharvey.com">ad</a></div>
+                </div>
+                <div class="meta">
+                    <div class="date" title="Tue Dec 15 2015 23:35:41 EST">Dec 15, 2015</div>
+                    <div class="reading-time"><div class="middot"></div>2 minutes read</div>
+                </div>
+            </div>
+            <div class="markdown">
+                <p>The greatest benefit of AWS is how it easy it is. The greatest danger of AWS is how easy it is. I learned this thankfully on a small scale. Currently, I am using Elasticache redis instances in conjunction with Resque. The instance type I used to start out was t2.small. It was cheap and burstable. On the surface this seemed perfect and awesome but for some reason AWS doesn&rsquo;t support snapshots for this instance type. So, of course, there came the day where I had to upgrade from Redis 2.6 to 2.8. The easiest method would be to take a snapshot and create a new replication cluster from a restored Elasticache snapshot. However, I can&rsquo;t snapshot. So <em>uh oh</em>. What to do? Luckily using the S3 seed features you can restore it yourself.</p>
+
+<p>If you don&rsquo;t already download and install redis-cli.
+<a href="http://redis.io/download">redis-cli tutorial</a></p>
+
+<p>Create a RDB snapshot. According to the Redis docs:
+&ldquo;<em>RDB is a very compact single-file point-in-time representation of your Redis data</em>&ldquo;</p>
+
+<p>So do this:</p>
+
+<p><code>redis-cli -h your_elasticache_endpoint.aws.com --rdb dump.rdb</code></p>
+
+<p>Next, upload the file to an S3 bucket. And grant open/download permissions to <strong>aws-scs-s3-readonly@amazon.com</strong>.</p>
+
+<p>Now create a new cluster and seed the new cluster with your RDB file. Make sure to include <strong>S3 Location of Redis RDB file</strong> like so:</p>
+
+<p><img src="https://marioharvey.com/content/images/2015/07/redisaws.png" alt="alt" /></p>
+
+<p>After the cluster is initialized your data should be seeded in your new cluster and you should be good to go.</p>
+
+                <br>
+                <p><a href="https://marioharvey.com/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'marioharvey';
+    var disqus_identifier = 'https:\/\/marioharvey.com\/blog\/restoring-elasticache-redis-instance-you-cant-snapshot\/';
+    var disqus_title = 'Restoring Elasticache Redis Instance You Can\x27t Snapshot';
+    var disqus_url = 'https:\/\/marioharvey.com\/blog\/restoring-elasticache-redis-instance-you-cant-snapshot\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+    var pageTracker = _gat._getTracker("XYZ");
+    pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+  
+
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+</body>
+</html>
+

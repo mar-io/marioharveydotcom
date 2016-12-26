@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Don&#39;t panic">
+
+<base href="https://marioharvey.com">
+<title>
+
+
+     Simple Ruby installs with Chruby 
+
+</title>
+<link rel="canonical" href="https://marioharvey.com/blog/simple-ruby-installs-with-chruby/">
+
+
+<script type="text/javascript">
+    var baseURL = 'https:\/\/marioharvey.com';
+    var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+    if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+        window.location.protocol = 'https:';
+    }
+</script>
+
+
+
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+
+
+<link rel="stylesheet" href="https://marioharvey.com/css/reset.css">
+<link rel="stylesheet" href="https://marioharvey.com/css/pygments.css">
+<link rel="stylesheet" href="https://marioharvey.com/css/main.css">
+
+
+    <link rel="stylesheet" href="https://marioharvey.com/css/override.css">
+
+
+
+<link rel="shortcut icon"
+
+    href="https://marioharvey.com/img/leaf.ico"
+
+>
+
+
+
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header"> 
+    <div class="container">
+        <div class="content">
+            
+            <a href="https://marioharvey.com/"><div class="name">Mario Harvey</div></a>
+            <nav>
+                <ul>
+                    
+                    <a href="https://marioharvey.com/about/"><li>About</li></a>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+
+        
+            <a href="https://github.com/mar-io" target="_blank">
+                <i class="icon ion-social-github"></i>
+            </a>
+        
+        
+        
+
+        
+            <a href="https://www.linkedin.com/in/marioharvey" target="_blank">
+                <i class="icon ion-social-linkedin"></i>
+            </a>
+        
+
+        
+
+        
+            <a href="https://soundcloud.com/charmsnakes" target="_blank">
+                <i class="icon ion-ios-musical-notes larger"></i>
+            </a>
+        
+
+        
+            <a href="mailto:mario@harvey.codes">
+                <i class="icon ion-ios-email larger"></i>
+            </a>
+        
+
+        
+            <a href="https://marioharvey.com/index.xml">
+                <i class="icon ion-social-rss larger"></i>
+            </a>
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Simple Ruby installs with Chruby
+
+</div>
+
+                    <div class="initials"><a href="https://marioharvey.com">ad</a></div>
+                </div>
+                <div class="meta">
+                    <div class="date" title="Mon Apr 6 2015 00:10:33 -0500">Apr 6, 2015</div>
+                    <div class="reading-time"><div class="middot"></div>3 minutes read</div>
+                </div>
+            </div>
+            <div class="markdown">
+                <p><img src="https://marioharvey.com/content/images/2015/Mar/cherryblossoms.jpg" alt="cover" />
+Ruby version managers like rvm and rbenv are proven tools that certainly will get the job done. However, it&rsquo;s hard to overlook deficiencies with these tools that make them less than elegant to use at times.</p>
+
+<p>RVM can be this monolithic beast that has to take over the entire system/server. You&rsquo;ll quickly run into issues if you have to flip between ruby versions or have multi-user setups where you will find yourself using ugly wrappers like rvmsudo.</p>
+
+<p>My experience with rbenv has been admittedly less but I find it to be somewhat confusing to set up and easy to misconfigure which can lead to headaches when all you want to do is install ruby 2.2.2 and ruby 1.8.3 and switch back and forth.</p>
+
+<p><a href="https://github.com/postmodern/chruby"><strong>Chruby</strong></a> (<em>change ruby</em>) and <a href="https://github.com/postmodern/ruby-install"><strong>ruby-install</strong></a> to the rescue!</p>
+
+<p>Chruby is a tool that will manage which rubies are on your system. Ruby-install will install the versions of ruby you want.</p>
+
+<p>For this to work you need to install some prerequisite packages:</p>
+
+<p>On ubuntu/debian:
+<code>$ sudo apt-get install build-essential</code></p>
+
+<p>On centos/rhel:
+<code>$ yum groupinstall &quot;Development Tools&quot;</code></p>
+
+<p>The above commands will install the necessary c++ build tools and compilers needed to build chruby, ruby-install, and compile/build the downloaded rubies.</p>
+
+<p>You can read more about installing chruby on the github project&rsquo;s <a href="https://github.com/postmodern/chruby/blob/master/README.md">readme</a>. Installing chruby on most linux distros is <strong>simple</strong>:</p>
+
+<pre><code>$ wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
+$ tar -xzvf chruby-0.3.9.tar.gz
+$ cd chruby-0.3.9/
+$ sudo ./scripts/setup.sh
+</code></pre>
+
+<p>After chruby is installed simply add this to .bashrc or .zshrc:</p>
+
+<pre><code>source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+</code></pre>
+
+<p>Now source your shell rc file:
+    <code>$ source ~/.bashrc</code></p>
+
+<p>Now keep in mind that when you install new rubies you simply source your shell&rsquo;s rc file as above.</p>
+
+<p>Since we installed chruby, we can execute chruby from the command line and it will show you what rubies are available and the current ruby that is selected.</p>
+
+<p><code>$ chruby</code></p>
+
+<p>Since we have no ruby installed this command will return nothing.</p>
+
+<p>Let&rsquo;s install <strong>ruby-install</strong> to install some rubies. You can read more about ruby-install at the github project&rsquo;s <a href="https://github.com/postmodern/ruby-install/blob/master/README.md">readme</a>.</p>
+
+<p>Again, installing ruby-install is simple:</p>
+
+<pre><code>$ wget -O ruby-install-0.5.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz
+$ tar -xzvf ruby-install-0.5.0.tar.gz
+$ cd ruby-install-0.5.0/
+$ sudo make install
+</code></pre>
+
+<p>You now have the ruby-install command at your disposal.</p>
+
+<p>To install a ruby by version is easy:</p>
+
+<p><code>$ ruby-install ruby 2.2.2</code></p>
+
+<p>At this point you should see alot of stdout in your terminal window.</p>
+
+<p>It will go through a process of installing the source and compiling your ruby into your ~/.rubies folder.</p>
+
+<p>Chruby will know to automatically look in both ~/.rubies and /opt/rubies for rubies installed.</p>
+
+<p>After the install is completed, source your shell rc file.
+<code>$ source ~/.bashrc</code></p>
+
+<p>Now execute chruby to select the newly installed ruby:</p>
+
+<p><code>$ chruby</code></p>
+
+<p>You should see something like this:</p>
+
+<pre><code>ubuntu@nzb:~$ chruby
+   ruby-2.1.3
+   ruby-2.2.2
+</code></pre>
+
+<p>Now select the ruby you want to use:</p>
+
+<pre><code>ubuntu@nzb:~$ chruby 2.2.2
+ubuntu@nzb:~$ chruby
+   ruby-2.1.3
+ * ruby-2.2.2
+</code></pre>
+
+<p>Boom. Ruby 2.2.2 is ready to rock.</p>
+
+<pre><code>ubuntu@nzb:~$ ruby -v
+ruby 2.2.2p95 (2015-04-13 revision 50295) [x86_64-linux]
+</code></pre>
+
+<p>To take advantage of the auto-switching capabilities simply add a <code>.ruby-version</code> file to the directory specifying a specific version you need ruby to be. I usually set a default version in my home directory.</p>
+
+<p><code>echo 'ruby-2.2.2' &gt; ~/.ruby-version</code></p>
+
+<p>Now you should have ruby 2.2.2 ready to go whenever you login.</p>
+
+                <br>
+                <p><a href="https://marioharvey.com/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'marioharvey';
+    var disqus_identifier = 'https:\/\/marioharvey.com\/blog\/simple-ruby-installs-with-chruby\/';
+    var disqus_title = 'Simple Ruby installs with Chruby';
+    var disqus_url = 'https:\/\/marioharvey.com\/blog\/simple-ruby-installs-with-chruby\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+    var pageTracker = _gat._getTracker("XYZ");
+    pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+  
+
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+</body>
+</html>
+
