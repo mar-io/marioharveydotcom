@@ -5,7 +5,7 @@ draft = false
 
 +++
 
-Hi! **My name is Mario**
+Hi! **My name is Mario** 
 
 I am a self-taught and [*always learning*](https://github.com/mar-io) engineer. 
 
@@ -22,3 +22,5 @@ I enjoy philosophy and politics and, **for better or worse**, occasionally give 
 I **love** sports. Really passionate about the [Washington Redskins](http://www.redskins.com/), [US Soccer](http://www.ussoccer.com/), and basketball in general.
 
 The musings on my page are [**mine alone**](https://www.linkedin.com/in/marioharvey).
+
+![Mario Harvey](https://s3.us-east-2.amazonaws.com/marioharvey.com/media/pics/marioharvey.jpg)
