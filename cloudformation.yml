@@ -21,12 +21,7 @@
         WebsiteConfiguration: 
           IndexDocument: index.html
           ErrorDocument: 404.html
-    S3Bucketwww: 
-      Type: AWS::S3::Bucket
-      Properties: 
-        AccessControl: PublicRead
-        BucketName: www.marioharvey.com
-        WebsiteConfiguration: 
-          RedirectAllRequestsTo: 
-            Hostname: marioharvey.com
-            Protocol: https
+    #create rewrite rules for bucket
+    #create cloudfront distro
+    #setup cloudfront distro to point at website endpoint
+    #add route53 records to point to cloudfront distro

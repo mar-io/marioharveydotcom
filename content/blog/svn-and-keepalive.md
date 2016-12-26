@@ -5,8 +5,6 @@ draft = false
 
 +++
 
-![cover](/content/images/2015/Mar/stayinalive.jpg)
-
 If you find yourself in the unfortunate position of being responsible for a project using svn (==move to [Git](http://git-scm.com/) already it's **2015**==), you may want to make sure to enable the Apache [KeepAlive directive](http://httpd.apache.org/docs/2.2/mod/core.html#keepalive) in the httpd.conf on the svn server.
 
 This setting will allow multiple requests (files, text, etc.) to come over the same tcp connection. This is awesome in the case of large svn repos because if that connection breaks you will often get an error like:

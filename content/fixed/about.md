@@ -5,22 +5,20 @@ draft = false
 
 +++
 
-Hi! **My name is Mario** ...but you can call me *Fred*...
+Hi! **My name is Mario**
 
-		DISCLAIMER: Just kidding! If you call me "Fred", I will look at you confused.
-
-I am a self-taught and *always learning* engineer. 
+I am a self-taught and [*always learning*](https://github.com/mar-io) engineer. 
 
 **From** DC but *now* living in Chicago. 
 
-I work *primarily* on systems engineering and cloud architecture problems utilizing Amazon Web Services.
+I work *primarily* on systems engineering and cloud architecture problems utilizing [Amazon Web Services](https://aws.amazon.com/).
 
-My **first love** is *music*. Particulary... hip hop and house music.
+My **first love** is [*music*](https://soundcloud.com/charmsnakes). Particulary... hip hop and house music.
 
-I like linux containers and analog synthesizers. Not *necessarily* in that order.
+I like [linux containers](https://www.docker.com/) and [analog synthesizers](https://www.moogmusic.com/legacy/moog-product-timeline). Not *necessarily* in that order.
 
 I enjoy philosophy and politics and, **for better or worse**, occasionally give my 2¢ on the subjects.
 
-I **love** sports. Really passionate about the Washington Redskins, US Soccer, and basketball in general.
+I **love** sports. Really passionate about the [Washington Redskins](http://www.redskins.com/), [US Soccer](http://www.ussoccer.com/), and basketball in general.
 
-The musings on my page are **mine alone**.
+The musings on my page are [**mine alone**](https://www.linkedin.com/in/marioharvey).

@@ -4,7 +4,7 @@ script:
   - hugo
   - python --version
   - sudo pip install awscli
-  - aws s3 sync public/ s3://marioharvey.com --delete
+  - aws s3 sync public/ s3://marioharvey.com --delete --storage-class REDUCED_REDUNDANCY
 notifications:
     email:
         on_failure: always

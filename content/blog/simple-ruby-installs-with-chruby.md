@@ -4,7 +4,8 @@ title = "Simple Ruby installs with Chruby"
 draft = false
 
 +++
-![cover](/content/images/2015/Mar/cherryblossoms.jpg)
+
+
 Ruby version managers like rvm and rbenv are proven tools that certainly will get the job done. However, it's hard to overlook deficiencies with these tools that make them less than elegant to use at times. 
 
 RVM can be this monolithic beast that has to take over the entire system/server. You'll quickly run into issues if you have to flip between ruby versions or have multi-user setups where you will find yourself using ugly wrappers like rvmsudo.
