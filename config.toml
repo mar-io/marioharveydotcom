@@ -10,6 +10,8 @@ title = "Mario Harvey"
 pygmentsuseclasses = true
 disqusshortname = "marioharvey" # Comment out to disable Disqus.
 pluralizelisttitles = false
+themesdir = "themes"
+theme = "cocoa"
 
 [permalinks]
 fixed = ":title/"
