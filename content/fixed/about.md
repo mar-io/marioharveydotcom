@@ -7,19 +7,19 @@ draft = false
 
 Hi! **My name is Mario** 
 
-I am a self-taught and [*always learning*](https://github.com/mar-io) engineer. 
+I find that I never stop [*learning*](https://github.com/mar-io) new things.
 
-**From** DC but *now* living in Chicago. 
+I grew up in the Washington DC area and decided to move to Chicago because I love the city.
 
-I work *primarily* on systems engineering and cloud architecture problems utilizing [Amazon Web Services](https://aws.amazon.com/).
+I tend to tinker *primarily* on systems engineering and cloud architecture problems utilizing [Amazon Web Services](https://aws.amazon.com/). Passionate about solutions that scale.
 
-My **first love** is [*music*](https://soundcloud.com/charmsnakes). Particulary... hip hop and house music.
+My **first love** is [*music*](https://soundcloud.com/charmsnakes). Particularly... hip hop and house music. Yes, I've had some [pretty cool home studios](https://vimeo.com/18892572).
 
-I like [linux containers](https://www.docker.com/) and [analog synthesizers](https://www.moogmusic.com/legacy/moog-product-timeline). Not *necessarily* in that order.
+[Analog synthesizers](https://www.moogmusic.com/legacy/moog-product-timeline) are cool.
 
 I enjoy philosophy and politics and, **for better or worse**, occasionally give my 2¢ on the subjects.
 
-I **love** sports. Really passionate about the [Washington Redskins](http://www.redskins.com/), [US Soccer](http://www.ussoccer.com/), and basketball in general.
+Grew up playing basketball, football, and soccer. **Big supporter** of the [Washington Redskins](http://www.redskins.com/), [US Soccer](http://www.ussoccer.com/), and basketball in general.
 
 The musings on my page are [**mine alone**](https://www.linkedin.com/in/marioharvey).
 
