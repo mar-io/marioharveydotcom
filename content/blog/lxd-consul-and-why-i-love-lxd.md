@@ -1,11 +1,10 @@
 +++
-draft = true
-date = "2016-12-25T22:25:44-05:00"
+draft = false
+date = "2016-06-09T22:25:44-05:00"
 title = "LXD Consul and Why I Love LXD"
 
 +++
 
-# lxd-consul
 I have been wanting to work more closely with consul as far as developing my own daemons utilizing consul. This have given me the need for quick/on-demand development consul clusters and have found that LXD has been a great tool for me. In about 20-30 seconds, this script will give you a fully functional consul cluster with isolated and persisted data within the container much like how consul would run in a data center/cloud. 
 
 [lxd-consul](https://github.com/mar-io/lxd-consul) is a bash script that will spin up a consul cluster on Ubuntu 16.04 LTS utilizing lxd containers.

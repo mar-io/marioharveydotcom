@@ -1,3 +1,38 @@
-languageCode = "en-us"
-title = "My New Hugo Site"
-baseurl = "http://example.org/"
+baseurl = "https://marioharvey.com" 
+builddrafts = false
+canonifyurls = true
+contentdir = "content"
+languageCode = "en-US"
+layoutdir = "layouts"
+publishdir = "public"
+author = "Mario Harvey"
+title = "Mario Harvey"
+pygmentsuseclasses = true
+disqusshortname = "marioharvey" # Comment out to disable Disqus.
+pluralizelisttitles = false
+
+[permalinks]
+fixed = ":title/"
+blog = "blog/:slug/"
+
+[params]
+author = "Mario Harvey"
+# gravatar = "" # do not use in the same time as Avatar
+# avatar = "" # path to image in static dir e.g img/avatar.png (do not use in the same time as Gravatar)
+# cachebuster = false # FIXME: See issue #32.
+dateform = "Jan 2, 2006"
+dateformfull = "Mon Jan 2 2006 15:04:05 MST"
+description = "Don't panic"
+email = "mario@harvey.codes"
+faviconfile = "img/leaf.ico"
+gatracker = "XYZ"
+github = "https://github.com/mar-io"
+highlightjs = true
+# highlightjslanguages = ["go"] # additional languages not included in the "common" set
+initials = "ad" # Displayed on single post page; DEPRECATED in v0.3.0.
+lang = "en"
+linkedin = "https://www.linkedin.com/in/marioharvey"
+twitter = ""
+soundcloud = "https://soundcloud.com/charmsnakes"
+
+extracssfiles = [ "/css/override.css" ] # In your `static/css`, add/remove files as necessary.
