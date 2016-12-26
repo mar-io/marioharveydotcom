@@ -23,4 +23,4 @@ I **love** sports. Really passionate about the [Washington Redskins](http://www.
 
 The musings on my page are [**mine alone**](https://www.linkedin.com/in/marioharvey).
 
-![Mario Harvey](https://s3.us-east-2.amazonaws.com/marioharvey.com/media/pics/marioharvey.jpg)
+![Mario Harvey](https://s3.us-east-2.amazonaws.com/marioharvey.com-media/marioharvey.jpg)
