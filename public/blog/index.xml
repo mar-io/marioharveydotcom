@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Mario Harvey</title>
+    <link>https://marioharvey.com/blog/index.xml</link>
+    <description>Recent content in Blog on Mario Harvey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 09 Jun 2016 22:25:44 -0500</lastBuildDate>
+    <atom:link href="https://marioharvey.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>LXD Consul and Why I Love LXD</title>
+      <link>https://marioharvey.com/blog/lxd-consul-and-why-i-love-lxd/</link>
+      <pubDate>Thu, 09 Jun 2016 22:25:44 -0500</pubDate>
+      
+      <guid>https://marioharvey.com/blog/lxd-consul-and-why-i-love-lxd/</guid>
+      <description>
+
+&lt;p&gt;I have been wanting to work more closely with consul as far as developing my own daemons utilizing consul. This have given me the need for quick/on-demand development consul clusters and have found that LXD has been a great tool for me. In about 20-30 seconds, this script will give you a fully functional consul cluster with isolated and persisted data within the container much like how consul would run in a data center/cloud.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/mar-io/lxd-consul&#34;&gt;lxd-consul&lt;/a&gt; is a bash script that will spin up a consul cluster on Ubuntu 16.04 LTS utilizing lxd containers.&lt;/p&gt;
+
+&lt;p&gt;lxd-consul has only been tested on Ubuntu 16.04 and should be used for dev/testing purposes. I have shared this for others interested in working or learning more about consul or lxd.&lt;/p&gt;
+
+&lt;h4 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Ubuntu 16.04 LTS&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;LXD install &amp;ndash; &lt;a href=&#34;https://linuxcontainers.org/lxd/getting-started-cli/&#34;&gt;howto&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;installing-lxd-consul&#34;&gt;Installing lxd-consul&lt;/h4&gt;
+
+&lt;p&gt;Clone the repo:
+&lt;code&gt;git clone git@github.com:mar-io/lxd-consul.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Change Directory:
+&lt;code&gt;cd lxd-consul&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Run the script:
+&lt;code&gt;./lxd-consul.sh create&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;At this point, the script will run, create containers, and return the IPs of the cluster.&lt;/p&gt;
+
+&lt;p&gt;To &lt;strong&gt;stop&lt;/strong&gt; the cluster:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;./lxd-consul.sh stop&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To &lt;strong&gt;start&lt;/strong&gt; the cluster:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;./lxd-consul.sh start&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To &lt;strong&gt;destroy&lt;/strong&gt; the cluster:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;./lxd-consul.sh destroy&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;why-lxd-instead-of-docker&#34;&gt;Why LXD instead of Docker?&lt;/h4&gt;
+
+&lt;p&gt;LXD is a very easy to use/install virtualization solution for Ubuntu users. With LXD you get all the benefits of Docker like speed, portability, isolation, and performance. However, you gain a more familiar hypervisor experience as opposed to the somewhat opinionated Docker workflow. LXD is designed to run containers which are running full operating systems which allow you to treat the container like a vm. LXD containers are smaller than traditional VM images and since they are containers they run very close to the metal. For this script, I utilized Alpine Linux images which are extraordinarily minimalist images using about 3MB of disk. Only potential downside is that LXD doesn&amp;rsquo;t have a declarative configuration file (Dockerfile) or as great a mindshare/ecosystem as Docker.&lt;/p&gt;
+
+&lt;p&gt;I highly recommend reading about the ease and benefits of LXD here:
+&lt;a href=&#34;http://insights.ubuntu.com/2016/03/14/the-lxd-2-0-story-prologue/&#34;&gt;LXD Tutorial&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Restoring Elasticache Redis Instance You Can&#39;t Snapshot</title>
+      <link>https://marioharvey.com/blog/restoring-elasticache-redis-instance-you-cant-snapshot/</link>
+      <pubDate>Tue, 15 Dec 2015 23:35:41 -0500</pubDate>
+      
+      <guid>https://marioharvey.com/blog/restoring-elasticache-redis-instance-you-cant-snapshot/</guid>
+      <description>&lt;p&gt;The greatest benefit of AWS is how it easy it is. The greatest danger of AWS is how easy it is. I learned this thankfully on a small scale. Currently, I am using Elasticache redis instances in conjunction with Resque. The instance type I used to start out was t2.small. It was cheap and burstable. On the surface this seemed perfect and awesome but for some reason AWS doesn&amp;rsquo;t support snapshots for this instance type. So, of course, there came the day where I had to upgrade from Redis 2.6 to 2.8. The easiest method would be to take a snapshot and create a new replication cluster from a restored Elasticache snapshot. However, I can&amp;rsquo;t snapshot. So &lt;em&gt;uh oh&lt;/em&gt;. What to do? Luckily using the S3 seed features you can restore it yourself.&lt;/p&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t already download and install redis-cli.
+&lt;a href=&#34;http://redis.io/download&#34;&gt;redis-cli tutorial&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Create a RDB snapshot. According to the Redis docs:
+&amp;ldquo;&lt;em&gt;RDB is a very compact single-file point-in-time representation of your Redis data&lt;/em&gt;&amp;ldquo;&lt;/p&gt;
+
+&lt;p&gt;So do this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;redis-cli -h your_elasticache_endpoint.aws.com --rdb dump.rdb&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, upload the file to an S3 bucket. And grant open/download permissions to &lt;strong&gt;aws-scs-s3-readonly@amazon.com&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now create a new cluster and seed the new cluster with your RDB file. Make sure to include &lt;strong&gt;S3 Location of Redis RDB file&lt;/strong&gt; like so:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://marioharvey.com/content/images/2015/07/redisaws.png&#34; alt=&#34;alt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After the cluster is initialized your data should be seeded in your new cluster and you should be good to go.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Surface Pro 3 and Ubuntu 15.04 with working kernel</title>
+      <link>https://marioharvey.com/blog/surface-pro-3-and-ubuntu-15.04-with-working-kernel/</link>
+      <pubDate>Mon, 22 Jun 2015 00:02:51 -0500</pubDate>
+      
+      <guid>https://marioharvey.com/blog/surface-pro-3-and-ubuntu-15.04-with-working-kernel/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://marioharvey.com/content/images/2015/Jul/20150722_110143.jpg&#34; alt=&#34;cover&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Having Ubuntu 15.04 running on a Surface Pro 3 is pretty awesome. However, for it to work you need to compile your own patched kernel. That being said, I did the annoying work for you and have a provided a link to a patched kernel below.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What works&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;battery&lt;/li&gt;
+&lt;li&gt;power button&lt;/li&gt;
+&lt;li&gt;volume buttons&lt;/li&gt;
+&lt;li&gt;front/rear cam&lt;/li&gt;
+&lt;li&gt;all known type covers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;What’s broke&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;multitouch/gestures&lt;/li&gt;
+&lt;li&gt;finnicky touch screen&lt;/li&gt;
+&lt;li&gt;finnicky pen&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here is the link to the kernel files for download:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/uc?id=0B1U4Djb5-G7XTXAtdzJ6M2E0dlU&amp;amp;export=download&#34;&gt;SurfacePro3-Ubuntu15.04-3.19.0-23-kernel&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To install just extract the tarball and run:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo dpkg -i linux-headers* linux-image*&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you want to build your own kernel you can follow a great guide here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/neoreeps/surface-pro-3&#34;&gt;https://github.com/neoreeps/surface-pro-3&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;One thing to note is that you will also want to use a patch I created to make sure your keyboard works:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/badmadrad/surface-pro-3/blob/c2b7d8d05dde630c41b278c7997608501715c340/typecover.patch&#34;&gt;Type Cover 3 Patch&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The reason is that there are 5 different Type Covers with different hard-coded product ids. The current 15.04 kernel only supports 1 out of the 5 known type covers. This patch will make sure that your type cover will work no matter what region or model.&lt;/p&gt;
+
+&lt;p&gt;Good luck and let me know if you have questions.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SVN and Keepalive</title>
+      <link>https://marioharvey.com/blog/svn-and-keepalive/</link>
+      <pubDate>Sat, 09 May 2015 00:09:30 -0500</pubDate>
+      
+      <guid>https://marioharvey.com/blog/svn-and-keepalive/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://marioharvey.com/content/images/2015/Mar/stayinalive.jpg&#34; alt=&#34;cover&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you find yourself in the unfortunate position of being responsible for a project using svn (==move to &lt;a href=&#34;http://git-scm.com/&#34;&gt;Git&lt;/a&gt; already it&amp;rsquo;s &lt;strong&gt;2015&lt;/strong&gt;==), you may want to make sure to enable the Apache &lt;a href=&#34;http://httpd.apache.org/docs/2.2/mod/core.html#keepalive&#34;&gt;KeepAlive directive&lt;/a&gt; in the httpd.conf on the svn server.&lt;/p&gt;
+
+&lt;p&gt;This setting will allow multiple requests (files, text, etc.) to come over the same tcp connection. This is awesome in the case of large svn repos because if that connection breaks you will often get an error like:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;svn: E175002: Connection reset&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This will cause your checkout to fail and you will have to start the whole thing again and it will probably fail again with the same error.&lt;/p&gt;
+
+&lt;p&gt;So enable keep alive by finding the http.conf on your svn server usually located at &lt;code&gt;/etc/httpd/conf/httpd.conf&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Open the file and make the following changes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# KeepAlive: Whether or not to allow persistent connections (more than
+# one request per connection). Set to &amp;quot;Off&amp;quot; to deactivate.
+#
+KeepAlive On
+
+#
+# MaxKeepAliveRequests: The maximum number of requests to allow
+# during a persistent connection. Set to 0 to allow an unlimited amount.
+# We recommend you leave this number high, for maximum performance.
+#
+MaxKeepAliveRequests  200 (this can change based on how many users at peak usage)
+#
+# KeepAliveTimeout: Number of seconds to wait for the next request from the
+# same client on the same connection.
+#
+KeepAliveTimeout 3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The benefits of using &lt;code&gt;KeepAlive&lt;/code&gt; is an &lt;strong&gt;increase in the speed and reliability of svn while reducing cpu usage&lt;/strong&gt; since it will not open and close as many connections when checking out code.&lt;/p&gt;
+
+&lt;p&gt;The downside is that &lt;strong&gt;memory usage will increase&lt;/strong&gt; due to the fact that svn will be holding many connections at same time and waiting for requests and responses over those connections. So make sure to monitor memory usage and gauge what is right for you.&lt;/p&gt;
+
+&lt;p&gt;In conclusion, switch to Git.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Simple Ruby installs with Chruby</title>
+      <link>https://marioharvey.com/blog/simple-ruby-installs-with-chruby/</link>
+      <pubDate>Mon, 06 Apr 2015 00:10:33 -0500</pubDate>
+      
+      <guid>https://marioharvey.com/blog/simple-ruby-installs-with-chruby/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://marioharvey.com/content/images/2015/Mar/cherryblossoms.jpg&#34; alt=&#34;cover&#34; /&gt;
+Ruby version managers like rvm and rbenv are proven tools that certainly will get the job done. However, it&amp;rsquo;s hard to overlook deficiencies with these tools that make them less than elegant to use at times.&lt;/p&gt;
+
+&lt;p&gt;RVM can be this monolithic beast that has to take over the entire system/server. You&amp;rsquo;ll quickly run into issues if you have to flip between ruby versions or have multi-user setups where you will find yourself using ugly wrappers like rvmsudo.&lt;/p&gt;
+
+&lt;p&gt;My experience with rbenv has been admittedly less but I find it to be somewhat confusing to set up and easy to misconfigure which can lead to headaches when all you want to do is install ruby 2.2.2 and ruby 1.8.3 and switch back and forth.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/postmodern/chruby&#34;&gt;&lt;strong&gt;Chruby&lt;/strong&gt;&lt;/a&gt; (&lt;em&gt;change ruby&lt;/em&gt;) and &lt;a href=&#34;https://github.com/postmodern/ruby-install&#34;&gt;&lt;strong&gt;ruby-install&lt;/strong&gt;&lt;/a&gt; to the rescue!&lt;/p&gt;
+
+&lt;p&gt;Chruby is a tool that will manage which rubies are on your system. Ruby-install will install the versions of ruby you want.&lt;/p&gt;
+
+&lt;p&gt;For this to work you need to install some prerequisite packages:&lt;/p&gt;
+
+&lt;p&gt;On ubuntu/debian:
+&lt;code&gt;$ sudo apt-get install build-essential&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;On centos/rhel:
+&lt;code&gt;$ yum groupinstall &amp;quot;Development Tools&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The above commands will install the necessary c++ build tools and compilers needed to build chruby, ruby-install, and compile/build the downloaded rubies.&lt;/p&gt;
+
+&lt;p&gt;You can read more about installing chruby on the github project&amp;rsquo;s &lt;a href=&#34;https://github.com/postmodern/chruby/blob/master/README.md&#34;&gt;readme&lt;/a&gt;. Installing chruby on most linux distros is &lt;strong&gt;simple&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
+$ tar -xzvf chruby-0.3.9.tar.gz
+$ cd chruby-0.3.9/
+$ sudo ./scripts/setup.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After chruby is installed simply add this to .bashrc or .zshrc:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now source your shell rc file:
+    &lt;code&gt;$ source ~/.bashrc&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now keep in mind that when you install new rubies you simply source your shell&amp;rsquo;s rc file as above.&lt;/p&gt;
+
+&lt;p&gt;Since we installed chruby, we can execute chruby from the command line and it will show you what rubies are available and the current ruby that is selected.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ chruby&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Since we have no ruby installed this command will return nothing.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s install &lt;strong&gt;ruby-install&lt;/strong&gt; to install some rubies. You can read more about ruby-install at the github project&amp;rsquo;s &lt;a href=&#34;https://github.com/postmodern/ruby-install/blob/master/README.md&#34;&gt;readme&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Again, installing ruby-install is simple:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ wget -O ruby-install-0.5.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz
+$ tar -xzvf ruby-install-0.5.0.tar.gz
+$ cd ruby-install-0.5.0/
+$ sudo make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You now have the ruby-install command at your disposal.&lt;/p&gt;
+
+&lt;p&gt;To install a ruby by version is easy:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ ruby-install ruby 2.2.2&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;At this point you should see alot of stdout in your terminal window.&lt;/p&gt;
+
+&lt;p&gt;It will go through a process of installing the source and compiling your ruby into your ~/.rubies folder.&lt;/p&gt;
+
+&lt;p&gt;Chruby will know to automatically look in both ~/.rubies and /opt/rubies for rubies installed.&lt;/p&gt;
+
+&lt;p&gt;After the install is completed, source your shell rc file.
+&lt;code&gt;$ source ~/.bashrc&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now execute chruby to select the newly installed ruby:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ chruby&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You should see something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ubuntu@nzb:~$ chruby
+   ruby-2.1.3
+   ruby-2.2.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now select the ruby you want to use:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ubuntu@nzb:~$ chruby 2.2.2
+ubuntu@nzb:~$ chruby
+   ruby-2.1.3
+ * ruby-2.2.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Boom. Ruby 2.2.2 is ready to rock.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ubuntu@nzb:~$ ruby -v
+ruby 2.2.2p95 (2015-04-13 revision 50295) [x86_64-linux]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To take advantage of the auto-switching capabilities simply add a &lt;code&gt;.ruby-version&lt;/code&gt; file to the directory specifying a specific version you need ruby to be. I usually set a default version in my home directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;echo &#39;ruby-2.2.2&#39; &amp;gt; ~/.ruby-version&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you should have ruby 2.2.2 ready to go whenever you login.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
