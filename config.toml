@@ -34,7 +34,7 @@ highlightjs = true
 initials = "ad" # Displayed on single post page; DEPRECATED in v0.3.0.
 lang = "en"
 linkedin = "https://www.linkedin.com/in/marioharvey"
-twitter = ""
+twitter = "https://twitter.com/_marioharvey"
 soundcloud = "https://soundcloud.com/charmsnakes"
 
 # extracssfiles = [ "/css/override.css" ] # In your `static/css`, add/remove files as necessary.
