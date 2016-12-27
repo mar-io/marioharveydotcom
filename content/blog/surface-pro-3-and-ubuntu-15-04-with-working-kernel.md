@@ -5,8 +5,6 @@ draft = false
 
 +++
 
-![cover](/content/images/2015/Jul/20150722_110143.jpg)
-
 Having Ubuntu 15.04 running on a Surface Pro 3 is pretty awesome. However, for it to work you need to compile your own patched kernel. That being said, I did the annoying work for you and have a provided a link to a patched kernel below.
 
 **What works**
