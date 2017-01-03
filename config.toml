@@ -12,6 +12,7 @@ disqusshortname = "marioharvey" # Comment out to disable Disqus.
 pluralizelisttitles = false
 themesdir = "themes"
 theme = "cocoa"
+enableRobotsTXT = true
 
 [permalinks]
 fixed = ":title/"
