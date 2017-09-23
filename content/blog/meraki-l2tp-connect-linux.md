@@ -1,9 +1,10 @@
 +++
+draft = false
 date = "2017-09-23T00:10:33-05:00"
 title = "Connecting to a Meraki L2TP VPN on Fedora 26/Ubuntu 16.04"
-draft = false
 
 +++
+
 There are many blogs and forums detailing how to generally set up the L2TP VPN Client on both Ubuntu 16.04 and Fedora 26. 
 
 For Ubuntu 16.04 follow this excellent tutorial: http://blog.z-proj.com/enabling-l2tp-over-ipsec-on-ubuntu-16-04
