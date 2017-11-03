@@ -13,7 +13,7 @@ I grew up in the Washington DC area and decided to move to Chicago because I lov
 
 I tend to tinker with systems engineering and cloud architecture problems utilizing [Amazon Web Services](https://aws.amazon.com/). __I'm passionate about solutions that scale__.
 
-My **first love** is [*music*](https://soundcloud.com/charmsnakes). Particularly... hip hop and house music. And, yes, I've had some [pretty cool home studios](https://vimeo.com/18892572).
+My **first love** is [*music*](https://soundcloud.com/pharoahes). Particularly... hip hop and house music. And, yes, I've had some [pretty cool home studios](https://vimeo.com/18892572).
 
 [Analog synthesizers](https://www.moogmusic.com/legacy/moog-product-timeline) are cool.
 

@@ -36,6 +36,6 @@ initials = "ad" # Displayed on single post page; DEPRECATED in v0.3.0.
 lang = "en"
 linkedin = "https://www.linkedin.com/in/marioharvey"
 twitter = "https://twitter.com/_marioharvey"
-soundcloud = "https://soundcloud.com/charmsnakes"
+soundcloud = "https://soundcloud.com/pharoahes"
 
 # extracssfiles = [ "/css/override.css" ] # In your `static/css`, add/remove files as necessary.
