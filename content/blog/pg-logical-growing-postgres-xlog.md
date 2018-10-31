@@ -7,7 +7,7 @@ title = "Fixing pglogical and growing postgres xlogs"
 
 Using pglogical to stream to a standby postgres node is very simple and effective way to create an HA postgres cluster. We occasionally have issues where the xlog fills up the volume due to broken replication with pglogical.  If this happen here are some things check:
 
-1. Bad Tables or Columns
+1. **Bad Tables or Columns**
 
     Check the Postgres logs of the hot standby. Usually replication will fail if a table or column structure is missing on the standy database. You might see failed sql queries on table that doesn’t exist or missing column/incorrect data type issues.
 
@@ -15,7 +15,7 @@ Using pglogical to stream to a standby postgres node is very simple and effectiv
 
     See ddl replication commands in [pglogical docs](https://www.2ndquadrant.com/en/resources/pglogical/pglogical-docs/): `pglogical.replicate_ddl_command`
 
-2. Misconfigured pglogical setup
+2. **Misconfigured pglogical setup**
 
     Now if setting up streaming for the *first* time, you probably misconfigured pglogical and it will cause your xlog to fill as pglogical waits for a viable node to connect and begin shipping WAL logs.
 
