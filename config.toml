@@ -9,7 +9,7 @@ pygmentsUseClasses = true
 [params]
   description = "technology, random thoughts, and other ramblings"
   copyright = "Copyright © 2021 Mario Harvey"
-  dark = "auto"
+  dark = "on"
   highlight = true
 
 [menu]

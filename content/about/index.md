@@ -23,4 +23,4 @@ I grew up playing basketball, football, and soccer. **Big supporter** of the [Wa
 
 The musings on my page are [**mine alone**](https://www.linkedin.com/in/marioharvey).
 
-![Mario Harvey](https://s3.us-east-2.amazonaws.com/marioharvey.com-media/marioharvey.jpg)
+![Mario Harvey](https://f000.backblazeb2.com/file/marioharvey/media/photos/marioharvey.jpg)
