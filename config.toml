@@ -1,41 +1,35 @@
-baseurl = "https://marioharvey.com" 
-builddrafts = false
-canonifyurls = true
-contentdir = "content"
-languageCode = "en-US"
-layoutdir = "layouts"
-publishdir = "public"
-author = "Mario Harvey"
+baseURL = "https://marioharvey.com"
 title = "Mario Harvey"
-pygmentsuseclasses = true
-disqusshortname = "marioharvey" # Comment out to disable Disqus.
-pluralizelisttitles = false
-themesdir = "themes"
-theme = "cocoa"
-enableRobotsTXT = true
-
-[permalinks]
-fixed = ":title/"
-blog = "blog/:slug/"
+theme = "etch"
+languageCode = "en-US"
+enableInlineShortcodes = true
+pygmentsCodeFences = true
+pygmentsUseClasses = true
 
 [params]
-author = "Mario Harvey"
-# gravatar = "" # do not use in the same time as Avatar
-# avatar = "" # path to image in static dir e.g img/avatar.png (do not use in the same time as Gravatar)
-# cachebuster = false # FIXME: See issue #32.
-dateform = "Jan 2, 2006"
-dateformfull = "Mon Jan 2 2006 15:04:05 MST"
-description = "Don't panic"
-email = "hello@marioharvey.com"
-faviconfile = "img/favicon.ico"
-gatracker = "XYZ"
-github = "https://github.com/mar-io"
-highlightjs = true
-# highlightjslanguages = ["go"] # additional languages not included in the "common" set
-initials = "ad" # Displayed on single post page; DEPRECATED in v0.3.0.
-lang = "en"
-linkedin = "https://www.linkedin.com/in/marioharvey"
-#twitter = "https://twitter.com/_marioharvey"
-#soundcloud = "https://soundcloud.com/pharoahes"
+  description = "technology, random thoughts, and other ramblings"
+  copyright = "Copyright © 2021 Mario Harvey"
+  dark = "auto"
+  highlight = true
 
-# extracssfiles = [ "/css/override.css" ] # In your `static/css`, add/remove files as necessary.
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "posts"
+    title = "posts"
+    url = "/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "about"
+    name = "about"
+    title = "about"
+    url = "/about/"
+    weight = 20
+
+[permalinks]
+  posts = "/:title/"
+
+[markup.goldmark.renderer]
+  # Allows HTML in Markdown
+  unsafe = true

@@ -1,6 +1,6 @@
 +++
 date = "2016-12-26T00:14:53-05:00"
-title = "about"
+title = "About"
 draft = false
 
 +++
