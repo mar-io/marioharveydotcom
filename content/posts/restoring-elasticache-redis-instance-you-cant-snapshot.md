@@ -21,7 +21,7 @@ Next, upload the file to an S3 bucket. And grant open/download permissions to **
 
 Now create a new cluster and seed the new cluster with your RDB file. Make sure to include **S3 Location of Redis RDB file** like so:
 
-![alt](https://f000.backblazeb2.com/file/marioharvey/media/photos/redisaws.png)
+![alt](https://photos.marioharvey.com/file/marioharvey/media/photos/redisaws.png)
 
 After the cluster is initialized your data should be seeded in your new cluster and you should be good to go.
 

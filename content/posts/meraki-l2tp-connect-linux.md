@@ -25,7 +25,7 @@ After reading countless forums and comments, I realized I needed to explicitly s
 **Phase2 Algorithms: 3des-sha1**
 
 So in Network Manager L2TP, under **"IPsec settings"**, it should look like this:
-![VPN Config](https://f000.backblazeb2.com/file/marioharvey/media/photos/vpn.png)
+![VPN Config](https://photos.marioharvey.com/file/marioharvey/media/photos/vpn.png)
 
 So again, this will work with Meraki VPN. Other VPNs using L2TP may differ but this will be something you want to consider when setting up your vpn client.
 
