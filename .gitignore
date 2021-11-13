@@ -5,7 +5,7 @@ public
 *.o
 *.a
 *.so
-
+.hugo_build.lock
 # Folders
 _obj
 _test
