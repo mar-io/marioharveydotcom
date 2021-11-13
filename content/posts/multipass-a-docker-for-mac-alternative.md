@@ -1,6 +1,6 @@
 +++
 draft = false
-date = "2021-11-13T22:25:44-05:00"
+date = "2021-11-12T22:25:44-05:00"
 title = "Multipass a Docker for Mac alternative"
 
 +++
